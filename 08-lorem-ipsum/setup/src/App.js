@@ -10,12 +10,13 @@ function App() {
   }
 
   const returnArticles = (value) => {
+    console.log(value)
     const articles = data
       .map((item, index) => {
         return <p key={index}>{item}</p>
       })
       .filter((item) => {
-        return item.key <= value
+        return item.key < value
       })
     return articles
   }
@@ -32,7 +33,7 @@ function App() {
             id='amount'
             value={inputValue}
             min='1'
-            max='10'
+            max='9'
             onChange={(e) => setInputValue(e.target.value)}
           />
           <button className='btn' onClick={(e) => generateLoremIpsum(e)}>
