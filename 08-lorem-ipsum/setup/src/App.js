@@ -1,11 +1,50 @@
-import React, { useState } from 'react';
-import data from './data';
+import React, { useState } from 'react'
+import data from './data'
 function App() {
-  
-  
+  const [inputValue, setInputValue] = useState(2)
+  const [paras, setParas] = useState(inputValue)
+  const generateLoremIpsum = (e) => {
+    e.preventDefault()
+    const inputVal = document.getElementById('amount')
+    console.log(inputVal.value)
+    setParas(inputVal.value)
+  }
+
+  const returnArticles = (value) => {
+    const articles = data
+      .map((item, index) => {
+        return <p key={index}>{item}</p>
+      })
+      .filter((item) => {
+        return item.key < value
+      })
+    return articles
+  }
+
   return (
-  <h2>lorem ipsum project setup</h2>
-    )
+    <>
+      <section className='section-center'>
+        <h3>TIRED OF BORING LOREM IPSUM?</h3>
+        <form className='lorem-form'>
+          <label htmlFor='amount'>paragraphs:</label>
+          <input
+            type='number'
+            name='amount'
+            id='amount'
+            value={inputValue}
+            min='1'
+            max='10'
+            onChange={(e) => setInputValue(e.target.value)}
+          />
+          <button className='btn' onClick={(e) => generateLoremIpsum(e)}>
+            generate
+          </button>
+        </form>
+
+        {returnArticles(paras)}
+      </section>
+    </>
+  )
 }
 
-export default App;
+export default App
