@@ -6,7 +6,6 @@ function App() {
   const generateLoremIpsum = (e) => {
     e.preventDefault()
     const inputVal = document.getElementById('amount')
-    console.log(inputVal.value)
     setParas(inputVal.value)
   }
 
@@ -16,7 +15,7 @@ function App() {
         return <p key={index}>{item}</p>
       })
       .filter((item) => {
-        return item.key < value
+        return item.key <= value
       })
     return articles
   }
