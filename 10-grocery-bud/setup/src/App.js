@@ -101,7 +101,7 @@ function App() {
 
   return (
     <section className='section-center'>
-      <Alert flag={mode} />
+      {mode && <Alert flag={mode} />}
       <form className='grocery-form'>
         <h3>grocery bud</h3>
         <div className='form-control'>
